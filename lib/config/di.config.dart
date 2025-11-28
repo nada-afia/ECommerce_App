@@ -25,6 +25,8 @@ import '../domain/use_case/login_use_case.dart' as _i772;
 import '../domain/use_case/register_use_case.dart' as _i224;
 import '../features/ui/auth/login/cubit/login_view_model.dart' as _i1040;
 import '../features/ui/auth/register/cubit/register_view_model.dart' as _i586;
+import '../features/ui/Home/home_screen/cubit/home_screen_view_model.dart'
+    as _i208;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -34,6 +36,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final gitItModule = _$GitItModule();
+    gh.factory<_i208.HomeScreenViewModel>(() => _i208.HomeScreenViewModel());
     gh.singleton<_i361.BaseOptions>(() => gitItModule.providerBaseOptions());
     gh.singleton<_i528.PrettyDioLogger>(
       () => gitItModule.providePrettyDioLogger(),
