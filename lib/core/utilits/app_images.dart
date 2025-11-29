@@ -11,4 +11,7 @@ class AppImages{
   static const String unHeartIcon = 'assets/icons/un_heart.png';
   static const String unUserIcon = 'assets/icons/un_user.png';
   static const String unCategoryIcon = 'assets/icons/un_category.png';
+  static const String announce1 = 'assets/images/announce1.png';
+  static const String announce2 = 'assets/images/announce2.png';
+  static const String announce3 = 'assets/images/announce3.png';
 }

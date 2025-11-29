@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:ecommerce/api/model/request/login_request_dto.dart';
 import 'package:ecommerce/api/model/request/register_request_dto.dart';
 import 'package:ecommerce/api/model/response/auth_response_dto.dart';
+import 'package:ecommerce/api/model/response/category/category_response_dto.dart';
 import 'package:retrofit/retrofit.dart';
 import 'end_points.dart';
 
@@ -15,4 +16,6 @@ abstract class ApiServices {
   Future<AuthResponseDto> login(@Body() LoginRequestDto  loginRequest );
   @POST(EndPoints.register)
   Future<AuthResponseDto> register(@Body() RegisterRequestDto  registerRequest );
+   @GET(EndPoints.getCategories)
+  Future<CategoryResponseDto>getAllCategories();
 }
