@@ -118,6 +118,11 @@ class AppStyles {
     fontWeight: FontWeight.w500,
     color:AppColors.blue,
   );
+  static TextStyle blueMed18 = GoogleFonts.inter(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color:AppColors.blue,
+  );
   static TextStyle naturalWhiteMed20 = GoogleFonts.inter(
     fontSize: 20,
     fontWeight: FontWeight.w500,
@@ -147,6 +152,11 @@ class AppStyles {
     fontSize: 18,
     fontWeight: FontWeight.w400,
     color:AppColors.white,
+  );
+  static TextStyle blueReg12 = GoogleFonts.poppins(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color:AppColors.blue,
   );
   static TextStyle blackLight18 = GoogleFonts.poppins(
     fontSize: 18,

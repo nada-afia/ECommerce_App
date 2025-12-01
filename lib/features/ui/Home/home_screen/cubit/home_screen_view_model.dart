@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../tabs/categore_tab.dart';
 import '../../tabs/fav_tab.dart';
-import '../../tabs/home_tab.dart';
+import '../../tabs/home/home_tab.dart';
 import '../../tabs/user_tab.dart';
 @injectable
 class HomeScreenViewModel extends Cubit<HomeScreenStates>{
