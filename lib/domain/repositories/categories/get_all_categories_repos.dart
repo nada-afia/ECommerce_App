@@ -1,5 +1,5 @@
-import 'package:ecommerce/domain/entities/response/category/category_.dart';
+import 'package:ecommerce/domain/entities/response/common/category_or_brands.dart';
 
 abstract class GetAllCategoriesRepository{
-  Future<List<Category>?> getAllCategories();
+  Future<List<CategoryOrBrands>?> getAllCategories();
 }

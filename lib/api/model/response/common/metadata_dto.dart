@@ -8,11 +8,14 @@ class MetaDataDto {
   final int? numberOfPages;
   @JsonKey(name: "limit")
   final int? limit;
+  @JsonKey(name: "nextPage")
+  final int? nextPage;
 
   MetaDataDto ({
     this.currentPage,
     this.numberOfPages,
     this.limit,
+    this.nextPage,
   });
 
   factory MetaDataDto.fromJson(Map<String, dynamic> json) {

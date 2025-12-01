@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'category_dto.g.dart';
+part 'category_or_brand_dto.g.dart';
 @JsonSerializable()
-class CategoryDto {
+class CategoryOrBrandDto {
   @JsonKey(name: "_id")
   final String? id;
   @JsonKey(name: "name")
@@ -15,7 +15,7 @@ class CategoryDto {
   @JsonKey(name: "updatedAt")
   final String? updatedAt;
 
-  CategoryDto ({
+  CategoryOrBrandDto ({
     this.id,
     this.name,
     this.slug,
@@ -24,11 +24,11 @@ class CategoryDto {
     this.updatedAt,
   });
 
-  factory CategoryDto.fromJson(Map<String, dynamic> json) {
-    return _$CategoryDtoFromJson(json);
+  factory CategoryOrBrandDto.fromJson(Map<String, dynamic> json) {
+    return _$CategoryOrBrandDtoFromJson(json);
   }
 
   Map<String, dynamic> toJson() {
-    return _$CategoryDtoToJson(this);
+    return _$CategoryOrBrandDtoToJson(this);
   }
 }

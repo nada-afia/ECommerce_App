@@ -1,8 +1,7 @@
 import 'package:ecommerce/config/di.dart';
 import 'package:ecommerce/core/utilits/app_color.dart';
-import 'package:ecommerce/core/utilits/app_images.dart';
 import 'package:ecommerce/core/utilits/app_styles.dart';
-import 'package:ecommerce/domain/entities/response/category/category_.dart';
+import 'package:ecommerce/domain/entities/response/common/category_or_brands.dart';
 import 'package:ecommerce/features/ui/Home/tabs/home/category_brand_item.dart';
 import 'package:ecommerce/features/ui/Home/tabs/home/cubit/home_tab_states.dart';
 import 'package:ecommerce/features/ui/Home/tabs/home/cubit/home_tab_view_model.dart';
@@ -27,6 +26,7 @@ class _HomeTabState extends State<HomeTab> {
     // TODO: implement initState
     super.initState();
     viewModel.getCategories();
+    viewModel.getBrands();
   }
   @override
   Widget build(BuildContext context) {
@@ -50,9 +50,8 @@ class _HomeTabState extends State<HomeTab> {
                 bloc: viewModel,
                 builder: (context, state) {
                   if(state is CategoriesErrorState){
-                    return MainErrorWidget(errorMessage: state.message);
-                  }
-                  else if(state is CategoriesSuccessState){
+                    return MainErrorWidget(errorMessage: state.message);}
+                  else if(state is HomeTabSuccessState){
                     return  _buildCategoryBrandSec(list: state.categoryList??[]);
                   }else{
                     return MainLoadingWidget();
@@ -61,7 +60,20 @@ class _HomeTabState extends State<HomeTab> {
                //child: _buildCategoryBrandSec(const CategoryBrandItem())
             ),
             _lineBreak(name: "Brands"),
-           // _buildCategoryBrandSec(const CategoryBrandItem()),
+           BlocBuilder<HomeTabViewModel,HomeTabStates>(
+             bloc: viewModel,
+               builder: (context, state) {
+                 if(state is BrandsErrorState){
+                   return MainErrorWidget(errorMessage: state.message);
+                 }
+                 else if(state is HomeTabSuccessState){
+                   return  _buildCategoryBrandSec(list: state.brandsList??[]);
+                 }else{
+                   return MainLoadingWidget();
+                 }
+               },
+               //child: _buildCategoryBrandSec(const CategoryBrandItem())
+             ),
           ],
         ),
       ),
@@ -103,7 +115,7 @@ class _HomeTabState extends State<HomeTab> {
     );
   }
 
-  SizedBox _buildCategoryBrandSec({required List<Category>list}){
+  SizedBox _buildCategoryBrandSec({required List<CategoryOrBrands>list}){
     return SizedBox(
       height: 250.h,
       width: double.infinity,
@@ -115,7 +127,7 @@ class _HomeTabState extends State<HomeTab> {
         scrollDirection: Axis.horizontal,
         physics:  const ScrollPhysics(),
         itemBuilder: (context, index) {
-          return CategoryBrandItem(category: list[index],);
+          return CategoryBrandItem(item: list[index],);
         },
       ),
     );

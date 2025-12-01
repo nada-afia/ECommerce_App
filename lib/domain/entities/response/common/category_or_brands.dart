@@ -1,10 +1,10 @@
-class Category {
+class CategoryOrBrands {
   final String? id;
   final String? name;
   final String? slug;
   final String? image;
 
-  Category ({
+  CategoryOrBrands ({
     this.id,
     this.name,
     this.slug,

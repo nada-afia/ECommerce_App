@@ -1,4 +1,4 @@
-import 'package:ecommerce/domain/entities/response/category/category_.dart';
+import 'package:ecommerce/domain/entities/response/common/category_or_brands.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -6,8 +6,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../../../../core/utilits/app_color.dart';
 
 class CategoryBrandItem extends StatelessWidget {
-  Category category;
- CategoryBrandItem({super.key,required this.category});
+  CategoryOrBrands item;
+ CategoryBrandItem({super.key,required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class CategoryBrandItem extends StatelessWidget {
         Expanded(
           flex: 8,
           child: CachedNetworkImage(
-            imageUrl: category.image??'',
+            imageUrl: item.image??'',
             width: double.infinity,
             height: 10.h,
             fit: BoxFit.cover,
@@ -43,7 +43,7 @@ class CategoryBrandItem extends StatelessWidget {
         ),
         Expanded(
             flex: 4,
-            child: Text(category.name??'',
+            child: Text(item.name??'',
             textWidthBasis: TextWidthBasis.longestLine,
               softWrap: true,
               textAlign: TextAlign.center,
