@@ -46,6 +46,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   flutter_image_slideshow: any
   cached_network_image: any
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -59,7 +60,7 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   retrofit_generator: ^10.0.1
   build_runner: ^2.6.0
-  injectable_generator: any
+  injectable_generator: ^2.6.0
   json_serializable: ^6.10.0
 
 # For information on the generic Dart part of this file, see the

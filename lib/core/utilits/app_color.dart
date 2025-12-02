@@ -12,4 +12,7 @@ class AppColors {
   static const Color grey=Color(0xFF7B7B7B);
   static const Color red=Color(0xFFFF5659);
   static const Color transparentColor = Colors.transparent;
+  static const Color discountColor=Color(0x99004182);
+  static const Color yellowColor=Color(0xFFFBD941);
+
 }
