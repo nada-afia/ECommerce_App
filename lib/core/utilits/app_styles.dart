@@ -15,6 +15,11 @@ class AppStyles {
     fontWeight: FontWeight.bold,
     color: AppColors.black,
   );
+  static TextStyle blueReg11 = GoogleFonts.inter(
+    fontSize: 11,
+    fontWeight: FontWeight.bold,
+    color: AppColors.discountColor,
+  );
   static TextStyle blackBold16 = GoogleFonts.inter(
     fontSize: 16,
     fontWeight: FontWeight.bold,

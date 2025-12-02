@@ -25,65 +25,52 @@ class _HomeScreen extends State<HomeScreen> {
       bloc:viewModel,
       builder: (context, state) {
         return Scaffold(
-          body: Stack(
-            children: [
-              Positioned.fill(
-                child: viewModel.tabsList[viewModel.selectedIndex],
+          body: viewModel.tabsList[viewModel.selectedIndex],
+
+          bottomNavigationBar: ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(16),
+              topRight: Radius.circular(16),
+            ),
+            child: Theme(
+              data: Theme.of(context).copyWith(
+                splashColor: AppColors.transparentColor,
+                highlightColor: AppColors.transparentColor,
+                hoverColor: AppColors.transparentColor,
               ),
-              Positioned(
-                left: width * 0.03,
-                right: width * 0.03,
-                bottom: height * 0.01,
-                child: SafeArea(
-                  top: false,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(16),
-                        topRight: Radius.circular(16)
-                    ),
-                    child: Theme(
-                      data: Theme.of(context).copyWith(
-                        splashColor: AppColors.transparentColor,
-                        highlightColor: AppColors.transparentColor,
-                        hoverColor: AppColors.transparentColor,
-                      ),
-                      child: BottomNavigationBar(
-                        selectedItemColor: AppColors.white,
-                        unselectedItemColor: AppColors.white.withOpacity(0.6),
-                        backgroundColor: AppColors.blue,
-                        showSelectedLabels: false,
-                        showUnselectedLabels: false,
-                        currentIndex: viewModel.selectedIndex,
-                        type: BottomNavigationBarType.fixed,
-                        onTap:viewModel.bottomNavOnTap,
-                        items: [
-                          buildBottomNavBarItem(
-                            isSelected: viewModel.selectedIndex==0,
-                            selectedIcon: AppImages.homeIcon,
-                            unselected: AppImages.unHomeIcon,
-                          ),
-                          buildBottomNavBarItem(
-                            isSelected: viewModel.selectedIndex==1,
-                            selectedIcon: AppImages.unCategoryIcon,
-                            unselected: AppImages.categoryIcon,
-                          ),
-                          buildBottomNavBarItem(
-                            isSelected: viewModel.selectedIndex==2,
-                            selectedIcon: AppImages.unHeartIcon,
-                            unselected: AppImages.heartIcon,
-                          ),
-                          buildBottomNavBarItem(
-                            isSelected: viewModel.selectedIndex==3,
-                            selectedIcon: AppImages.unUserIcon,
-                            unselected: AppImages.userIcon,
-                          ),
-                        ],
-                      ),
-                    ),
+              child: BottomNavigationBar(
+                selectedItemColor: AppColors.white,
+                unselectedItemColor: AppColors.white.withOpacity(0.6),
+                backgroundColor: AppColors.blue,
+                showSelectedLabels: false,
+                showUnselectedLabels: false,
+                currentIndex: viewModel.selectedIndex,
+                type: BottomNavigationBarType.fixed,
+                onTap: viewModel.bottomNavOnTap,
+                items: [
+                  buildBottomNavBarItem(
+                    isSelected: viewModel.selectedIndex == 0,
+                    selectedIcon: AppImages.homeIcon,
+                    unselected: AppImages.unHomeIcon,
                   ),
-                ),
+                  buildBottomNavBarItem(
+                    isSelected: viewModel.selectedIndex == 1,
+                    selectedIcon: AppImages.unCategoryIcon,
+                    unselected: AppImages.categoryIcon,
+                  ),
+                  buildBottomNavBarItem(
+                    isSelected: viewModel.selectedIndex == 2,
+                    selectedIcon: AppImages.unHeartIcon,
+                    unselected: AppImages.heartIcon,
+                  ),
+                  buildBottomNavBarItem(
+                    isSelected: viewModel.selectedIndex == 3,
+                    selectedIcon: AppImages.unUserIcon,
+                    unselected: AppImages.userIcon,
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         );
       },
