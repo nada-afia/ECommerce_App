@@ -1,3 +1,4 @@
+import 'package:ecommerce/core/cach/shared_preferences.dart';
 import 'package:ecommerce/core/custom_elevated_btn.dart';
 import 'package:ecommerce/core/utilits/app%20routes.dart';
 import 'package:ecommerce/core/utilits/app_color.dart';
@@ -21,8 +22,8 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController emailController = TextEditingController(text: 'nadamoafia@gmail.com');
-  final TextEditingController passController = TextEditingController(text: 'Nada@1234');
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
   LoginViewModel viewModel = getIt<LoginViewModel>();
 
   @override
@@ -37,7 +38,10 @@ class _LoginScreenState extends State<LoginScreen> {
           DialogUtils.showMessage(context: context, message: state.errorMessage);
         } else if (state is AuthSuccessState) {
           DialogUtils.hideLoading(context: context);
-          DialogUtils.showMessage(context: context, message: 'Login Successfully', posActionName: 'ok');
+          DialogUtils.showMessage(context: context, message: 'Login Successfully', posActionName: 'ok',posAction: (){
+            SharedPreferencesUtils.saveData(key: 'token', value: state.authResponse.token??'');
+            Navigator.of(context).pushReplacementNamed(AppRoutes.home);
+          });
         }
       },
       child: Scaffold(
@@ -75,6 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         CustomTextField(
                           hintText: 'enter your email',
+                          controller: emailController,
                           validator:(value) =>  Validator.validateEmail(value),
                          keyboardType: TextInputType.emailAddress,
                         ),
@@ -86,6 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 24.h,),
                         CustomTextField(
                           hintText: 'Password',
+                          controller: passController,
                           suffixIcon: Icon(Icons.visibility_off),
                           validator: (value) =>  Validator.validatePassword(value),
                           keyboardType: TextInputType.text,
@@ -101,7 +107,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {  }, styleText: AppStyles.whiteReg18,)
                   ),
                   SizedBox(height:56.h),
-                  CustomElevatedButton(onPressed: (){},
+                  CustomElevatedButton(onPressed: (){
+                    viewModel.login(passController.text,emailController.text.trim());
+                  },
                     backgroundColor: AppColors.white,text:'Login',
                     textStyle:AppStyles.blueSemiBold20 ,),
                   SizedBox(height:   32.h),

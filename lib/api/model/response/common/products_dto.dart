@@ -1,7 +1,6 @@
-
-import 'package:ecommerce/api/model/response/products/sub_category_dto.dart';
 import 'package:json_annotation/json_annotation.dart';
-import '../common/category_or_brand_dto.dart';
+import 'category_or_brand_dto.dart';
+import 'sub_category_dto.dart';
 part 'products_dto.g.dart';
 
 @JsonSerializable()

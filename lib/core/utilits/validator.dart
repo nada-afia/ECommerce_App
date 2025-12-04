@@ -1,17 +1,17 @@
 class Validator{
   static String? validateEmail(String? val) {
-    RegExp emailRegex = RegExp(
-      r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
-    );
-
     if (val == null || val.trim().isEmpty) {
-      return 'this field is required';
-    } else if (emailRegex.hasMatch(val) == false) {
-      return 'enter valid email';
-    } else {
-      return null;
+      return 'This field is required';
     }
+    final emailRegex = RegExp(
+        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,}$");
+    if (!emailRegex.hasMatch(val.trim())) {
+      return 'Enter a valid email';
+    }
+
+    return null;
   }
+
   static String? validateName(String? val) {
     RegExp nameRegex = RegExp(r"^[a-zA-Z ]+$");
 

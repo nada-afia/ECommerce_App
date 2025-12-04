@@ -1,6 +1,5 @@
-import 'package:ecommerce/api/model/response/products/products_dto.dart';
+import 'package:ecommerce/api/model/response/common/products_dto.dart';
 import 'package:json_annotation/json_annotation.dart';
-
 import '../common/metadata_dto.dart';
 
 part 'products_response_dto.g.dart';

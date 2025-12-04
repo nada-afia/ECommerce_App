@@ -2,11 +2,12 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce/core/utilits/app_color.dart';
 import 'package:ecommerce/core/utilits/app_styles.dart';
+import 'package:ecommerce/features/ui/Home/tabs/cart/cubit/cart_screen_states.dart';
+import 'package:ecommerce/features/ui/Home/tabs/cart/cubit/cart_screen_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../../domain/entities/response/products/product.dart';
-
 class ProductTabItem extends StatelessWidget {
   final Product product;
   const ProductTabItem({super.key,required this.product});
@@ -18,7 +19,7 @@ class ProductTabItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius:  BorderRadius.circular(16.h),
-          border: Border.all(color: AppColors.blue,width: 2)
+          border: Border.all(color: AppColors.blue,width: 1)
         ),
         child: Column(
           children: [
@@ -108,17 +109,46 @@ class ProductTabItem extends StatelessWidget {
                   children: [
                     AutoSizeText(
                       "Review (${product.ratingsAverage})",
-                        maxLines:1,
-                        style:Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color:  AppColors.blue,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12.sp
-                        )
+                      maxLines: 1,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: AppColors.blue,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12.sp),
                     ),
                     Icon(
                       Icons.star,
-                      color:  AppColors.yellowColor,
+                      color: AppColors.yellowColor,
                       size: 25.sp,
+                    ),
+
+                    const Spacer(),
+
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                        padding: EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: AppColors.blue,
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 2,
+                            )
+                          ],
+                        ),
+                        child: InkWell(
+                          onTap: (){
+                            print("productId:${product.id}");
+                            CartTabViewModel.get(context).addToCart(product.id??'');
+                          },
+                          child: Icon(
+                            Icons.add,
+                            size: 18.sp,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 )

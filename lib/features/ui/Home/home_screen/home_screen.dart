@@ -1,6 +1,7 @@
 import 'package:ecommerce/config/di.dart';
 import 'package:ecommerce/features/ui/Home/home_screen/cubit/home_screen_states.dart';
 import 'package:ecommerce/features/ui/Home/home_screen/cubit/home_screen_view_model.dart';
+import 'package:ecommerce/features/ui/Home/tabs/cart/cubit/cart_screen_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utilits/app_color.dart';
@@ -16,11 +17,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreen extends State<HomeScreen> {
   HomeScreenViewModel viewModel=getIt<HomeScreenViewModel>();
 
-
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    CartTabViewModel.get(context).getItemsCart();
+  }
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
     return BlocBuilder<HomeScreenViewModel,HomeScreenStates>(
       bloc:viewModel,
       builder: (context, state) {

@@ -16,11 +16,11 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
-  final TextEditingController emailController = TextEditingController(text: 'nadamoafia@gmail.com');
-  final TextEditingController passController = TextEditingController(text: 'Nada@1234');
-  final TextEditingController nameController = TextEditingController(text: 'Nada Mohamed');
-  final TextEditingController repassController = TextEditingController(text: 'Nada@1234');
-  final TextEditingController phoneController = TextEditingController(text: '01115370349');
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController repassController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
   RegisterViewModel viewModel = getIt<RegisterViewModel>();
   @override
   Widget build(BuildContext context) {

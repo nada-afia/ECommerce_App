@@ -1,6 +1,6 @@
 import 'package:ecommerce/api/mapper/category_mapper.dart';
 import 'package:ecommerce/api/mapper/sub_category_mapper.dart';
-import 'package:ecommerce/api/model/response/products/products_dto.dart';
+import 'package:ecommerce/api/model/response/common/products_dto.dart';
 import 'package:ecommerce/domain/entities/response/products/product.dart';
 extension ProductMapper on ProductDto{
   Product toProducts(){
